@@ -1,259 +1,48 @@
 <template>
-    <main>
-        <div class="purple" >
-            <h1>TODO List</h1>
+    <div class="container">
+        <div class="container-flex">
+            <header class="todo-block">
+                <h3>List</h3>
+                <h3>Status</h3>
+                <h3>Close</h3>
+            </header>
+            <TodoItem v-for="(task, index) in tasks"
+                :task="task"
+            ></TodoItem>
         </div>
-            <!-- section-1: first block of the to-do list start -->
-                <section class="section-1">
-                    <input id="input" type="text" placeholder="What would you like to do?"><br>
-                    <button id="addBtn">Add</button>
-                </section>
-            <!-- section-1 end -->
-
-            <!-- section-2: second block of the to-do list start -->
-                <section class="section-2">
-
-                    <h1>Todo List</h1>
-                    
-                    <div id="tasks-container" class="container">
-                        <div class="row_heading">
-                            <div class="column_list">List</div>
-                            <div class="column_status">Status</div>
-                            <div class="column_close">Close</div>
-                        </div>
-                    <!-- Add more tasks start -->
-                        <div class="all_task" id="all_tasks">
-                            <!-- structure of each task start
-                                <div id="" class="row">
-                                    <div class="column1"></div>
-                                    <div class="column2"><button class="status_button completed"></button></div>
-                                    <div class="column3"><i class="fa-solid fa-trash-can"></i></div>
-                                </div> 
-                            structure end-->
-                        </div>
-                    <!-- Add more tasks end -->
-                    </div>
-                </section>
-            </main>
+    </div>
 </template>
 
 <script setup>
-    
+import TodoItem from './TodoItem.vue'
+import { ref } from 'vue'
+
+            const tasks=ref([
+                {id:'1', taskTitle:'task1',status:'Pending'},
+                {id:'2', taskTitle:'task2',status:'completed'},
+                {id:'3', taskTitle:'task3',status:'Pending'},
+            ])
+
 </script>
 
 <style scoped>
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    background-color:rgb(245, 240, 255);
-}
-main{
-    margin:4% auto;
-    text-align: center;
-    width: 600px;
-    max-height: 1200px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 20px;
-    color: white;
-    font-family: "Poppins", sans-serif;
-}
-.purple{
-    background: linear-gradient(to right, rgb(95, 45, 116), rgb(70, 70, 145)) ;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-    height: 8rem;
-}
-.section-1{
-    background-color:rgb(255, 254, 254);
-    width:85%;
-    padding: 2rem 9rem;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 10px;
+.container{
+    color: black;
+    width: 90%;
+    min-height: 50vh;
     position: relative;
-    top: -75px;
-    left: 8%;
-}
-.section-1 input{
-    background-color:rgb(245, 240, 255);
-    border: none;
-    border-bottom: 2px solid grey;
-    background-color: transparent;
-    font-size: 16px;
-    outline: none;  
-}
-.section-1 input:focus{
-    border-bottom: 2px solid rgb(167, 167, 167);
-}
-.section-1 button{
-    background-color: rgb(95, 95, 156) ;
-    box-shadow:  rgb(114, 114, 168) 0px 3px 8px;
-    border: none;
-    color: white;
-    width: 150px;
-    padding: .5rem;
-    border-radius: 5px;
-    margin-top: 15px;
-    cursor: pointer;
-    outline: none;
-}
-.section-1 button:hover{
-    background-color: rgb(81, 81, 153);
-    box-shadow: rgb(114, 114, 168) 0px 3px 8px;
-}
-.section-1 button:active{
-    box-shadow: none;
-    transform: scale(0.95);
-}
-
-.section-2{
-    background-color: rgb(255, 254, 254);
-    width:85%;
-    max-height:900px;
-    padding: 7rem 12.6rem;
+    top:-20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 10px;
-    position: relative;
-    top: -43px;
-    left: 46px;
 
-    padding-bottom:0 ;
 }
-
-.section-2 h1{
-    color:black;
-    margin-top:-100px;
-    margin-left:-230px;
-    width:150px;
-    font-family: "Poppins_b", sans-serif;
-    font-weight: bold;
-    font-size: 14px
-}
-
-.section-2 .row_heading{
-    color:#00000087;
-    background-color: #F5F5F5;
-    position: relative;
+header{
+    width: 100%;    
     display: flex;
+    align-items: center;
     flex-direction: row;
     justify-content: space-around;
-    width: 510px;
-    margin-left: -202px;
-    margin-top: 12px;
-    padding: 6px;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.section-2 .row_heading .column_list {
-        flex: 1.5;
-        text-align: left;
-        margin-left: 39px
-    }
-
-.section-2 .row_heading .column_status,
-.section-2 .row_heading .column_close {
-        flex: 1;
-        text-align: center;
-    }
-
-.section-2 .all_task{
-    margin-left: -201px;
-    width:510px;
-    max-height:200px;
-    overflow-y: auto;
-    overflow-x:hidden;
-}
-.section-2 .container .row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    color:black;
-    border-bottom: 2px solid #F5F5F5;    
-    font-size: 12px;
-}
-
-.section-2 .container .row .title_column{
-    flex: 1.5;
-    text-align: left;
-    margin-left: 42px;
-    padding: 18px 0;
-    text-transform:capitalize;
-    font-weight:bold;
-
-}
-
-.section-2 .container .row .status_column,
-.section-2 .container .row .delete_column{
-    flex: 1;
-    text-align: center;
-    padding: 15px 0;
-}
-
-.section-2 .container .row .status_column .status_button{
-    padding:5px 8px;
-    width: fit-content;
-    color: white;
-    background-color:rgb(187, 121, 0);
-    box-shadow:  rgb(187, 121, 0) 0px 1px 8px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-/* css effects start */
-.section-2 .container .row .status_column .status_button:hover{
-    background-color: rgba(187, 121, 0, 0.884);
-}
-.section-2 .container .row .status_column .status_button:active{
-    box-shadow: none;
-}
-.status_column button:active{
-    transform: scaleX(0.95);
-}
-.delete_column i{
-   color: rgb(240, 57, 57);
-   font-size: 20px;
-   cursor: pointer;
-}
-
-.delete_column i:hover{
-   color: rgb(233, 3, 3);
-   animation-name: shake;
-   animation-duration: 1s;
-   animation-iteration-count: infinite;
-}
-.delete_column i:active{
-   transform: scaleY(1.1);
-   animation: none;
-    color: red;
-}
-
-@keyframes shake {
-    0% { transform:  rotate(0deg); }
-   25% { transform:  rotate(-30deg); }
-   50% { transform:  rotate(30deg); }
-   75% { transform:  rotate(-30deg); }
-   100% { transform:  rotate(0deg); }
-}
-/* css effects end */
-
-
-
-/* toggle function styles for button start */
-.section-2 .container .row .status_column .status_button.Completed{
-    background-color: #5F9EA0;
-    color:white;
-    box-shadow:  #5F9EA0 0px 1px 8px;
-    
-    }
-
-.section-2 .container .row .status_column .status_button.Completed:hover{
-    background-color: #5f9ea0ea;
-}
-.section-2 .container .row .status_column .status_button.Completed:active{
-    box-shadow: none;
+    padding: 10px;
+    color: rgb(88, 88, 88);
+    background-color: rgba(237, 237, 237, 0.719);
 }
 </style>
