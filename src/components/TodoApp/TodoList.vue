@@ -6,24 +6,24 @@
                 <h3>Status</h3>
                 <h3>Close</h3>
             </header>
-            <TodoItem v-for="(task, index) in tasks"
+            <TodoItem 
+                v-for="task in props.tempTasks"
                 :task="task"
+                :key="task.id"
             ></TodoItem>
         </div>
     </div>
 </template>
 
+
 <script setup>
 import TodoItem from './TodoItem.vue'
-import { ref } from 'vue'
 
-            const tasks=ref([
-                {id:'1', taskTitle:'task1',status:'Pending'},
-                {id:'2', taskTitle:'task2',status:'completed'},
-                {id:'3', taskTitle:'task3',status:'Pending'},
-            ])
-
+let props = defineProps(['tempTasks'])
+// console.log(props.tempTasks)
 </script>
+
+
 
 <style scoped>
 .container{

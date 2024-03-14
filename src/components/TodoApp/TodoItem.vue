@@ -1,16 +1,17 @@
 <template>
     <div class="task-container">
          <div class="task-container-flex">
-            <div class="list">{{ props.task.taskTitle }}</div>
-            <div class="status" ><button class="status-button">{{ props.task.status }}</button></div>
+            <div class="list">{{ props.task.todo }}</div>
+            <div class="status" ><button class="status-button" :class="props.task.status === 'Completed'? 'completed' : 'pending'" >{{ props.task.completed }}</button></div>
             <div class="close"><i class="ri-delete-bin-5-fill"></i></div>
         </div>
     </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-    const props = defineProps(['task'])
+
+    let props = defineProps(['task'])
+    console.log(props.task);
 </script>
 
 <style scoped>
@@ -56,7 +57,7 @@ import { ref } from 'vue'
     background-color: #5f9ea0bc;
 }
 .close{
-    color:rgb(240, 57, 57) ;
+    color:rgb(205, 61, 61) ;
 
     cursor: pointer;
 }

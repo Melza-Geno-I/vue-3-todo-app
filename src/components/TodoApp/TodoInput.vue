@@ -7,17 +7,18 @@
             <!-- section-1: first block of the to-do list start -->
                 <section class="section-1">
                     <input id="input" type="text" placeholder="What would you like to do?"><br>
-                    <button id="addBtn">Add</button>
+                    <!-- <button id="addBtn" @click="addTask">Add</button> -->
                 </section>
             <!-- section-1 end -->
         </div>
     </div>
 </template>
 
-<script>
-    export default {
-        
-    }
+<script setup>
+// import { useTodoStore } from "../store/todoStore";
+
+//     const { addTask } = useTodoStore();
+
 </script>
 
 <style scoped>
@@ -58,7 +59,7 @@
     border: none;
     border-bottom: 2px solid grey;
     background-color: transparent;
-    font-size: 16px;
+    font-size: 19px;
     outline: none;  
 }
 .section-1 input:focus{
@@ -84,4 +85,4 @@
     transform: scale(0.95);
 }
 
-</style>
+</style>../../store/tasks
